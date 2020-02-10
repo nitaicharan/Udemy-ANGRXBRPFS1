@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { select, Store } from '@ngrx/store'
 import { RegisterRequest } from '../../model/register-request.model'
-import { isSubmittingSelector } from '../../store/selectors'
+import { isSubmittingSelector, validationErrorsSelector } from '../../store/selectors'
 import { registerAction } from '../../store/action/register.action'
 
 @Component({
-  selector: 'mc-register',
+  selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
@@ -22,11 +22,9 @@ export class RegisterComponent implements OnInit {
     this.initializeForm()
   }
 
-  isSubmitting$() {
-    return this.store.pipe(
-      select(isSubmittingSelector)
-    );
-  }
+  isSubmitting = () => this.store.pipe(select(isSubmittingSelector));
+  backendErrors = () => this.store.pipe(select(validationErrorsSelector));
+
 
   initializeForm(): void {
     console.log('initializeForm')
