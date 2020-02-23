@@ -5,13 +5,13 @@ import { map } from 'rxjs/operators'
 import { CurrentUser } from 'src/app/shared/model/current-user.model'
 import { environment } from 'src/environments/environment'
 import { AuthResponse } from '../model/auth-response.model'
-import { RegisterRequestInterface } from '../model/register-request.model'
+import { RegisterRequest } from '../model/register-request.model'
 
 @Injectable()
 export class AuthService {
   constructor(private http: HttpClient) { }
 
-  register(data: RegisterRequestInterface): Observable<CurrentUser> {
+  register(data: RegisterRequest): Observable<CurrentUser> {
     const url = environment.apiUrl + '/users'
     return this.http
       .post<AuthResponse>(url, data)
