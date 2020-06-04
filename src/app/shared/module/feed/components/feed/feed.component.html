@@ -25,6 +25,6 @@
       HERE LIST OF TAGS
     </a>
   </div>
-  <app-pagination [total]="(feed$ | async)?.articlesCount" [limit]="limit" [url]="baseUrl" [currentPage]="currentPage">
+  <app-pagination [total]="(feed$ | async)?.articlesCount" [url]="baseUrl" [page]="page">
   </app-pagination>
 </ng-container>

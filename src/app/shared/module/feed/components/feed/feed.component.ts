@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { BackendErrors } from 'src/app/shared/model/backend-errors.model';
@@ -17,13 +17,13 @@ export class FeedComponent implements OnInit, OnDestroy {
   feed$: Observable<FeedResponse>;
   error$: Observable<BackendErrors>;
   isLoading$: Observable<boolean>;
-  limit: number;
   baseUrl: string;
   queryParamsSubscription: Subscription;
-  currentPage: number;
+  page: number;
 
   constructor(
     private store: Store,
+    private router: Router,
     private activatedRoute: ActivatedRoute,
   ) { }
 
@@ -33,11 +33,12 @@ export class FeedComponent implements OnInit, OnDestroy {
     this.feed$ = this.store.select(feedSelector);
     this.error$ = this.store.select(errorSelector);
     this.isLoading$ = this.store.select(isLoadingSelector);
+    this.baseUrl = this.router.url.split('?')[0];
 
     this.activatedRoute.queryParams.subscribe(
       (params: Params) => {
         const page = Number(params.page || '1');
-        this.currentPage = page;
+        this.page = page;
       }
     );
   }
