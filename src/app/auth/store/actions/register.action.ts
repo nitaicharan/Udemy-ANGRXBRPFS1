@@ -1,20 +1,20 @@
 import { createAction, props } from "@ngrx/store";
-import { RegisterRequest as RegisterRequest } from '../../model/register-request.model';
-import { ActionType } from '../actions.type';
-import { CurrentUser } from 'src/app/shared/model/current-user.model';
 import { BackendErrors } from 'src/app/shared/model/backend-errors.model';
+import { CurrentUser } from 'src/app/shared/model/current-user.model';
+import { RegisterType } from '../types/register.type';
+import { RegisterRequest } from '../../models/register-request.model';
 
 export const registerAction = createAction(
-    ActionType.REGISTER,
+    RegisterType.REGISTER,
     props<{ request: RegisterRequest }>()
 );
 
 export const registerSuccessAction = createAction(
-    ActionType.REGISTER_SUCCESS,
+    RegisterType.REGISTER_SUCCESS,
     props<{ currentUser: CurrentUser }>()
 );
 
 export const registerFailureAction = createAction(
-    ActionType.REGISTER_FAILURE,
+    RegisterType.REGISTER_FAILURE,
     props<{ errors: BackendErrors }>()
 );

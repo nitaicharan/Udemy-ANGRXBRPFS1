@@ -4,9 +4,9 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
-import { AuthService } from '../../service/auth.service';
-import { registerAction, registerFailureAction, registerSuccessAction } from '../action/register.action';
 import { PersistanceService } from 'src/app/shared/service/persistance.service';
+import { registerAction, registerSuccessAction, registerFailureAction } from '../actions/register.action';
+import { AuthService } from '../../services/auth.service';
 
 @Injectable()
 export class RegisterEffect {
@@ -14,7 +14,6 @@ export class RegisterEffect {
         ofType(registerAction),
         switchMap(
             ({ request }) => this.authService.register(request).pipe(
-                tap(console.log),
                 tap(currentUser => this.persistanceService.setToken(currentUser.token)),
                 map(currentUser => registerSuccessAction({ currentUser })),
                 catchError((httpErrorResponse: HttpErrorResponse) => of(registerFailureAction({ errors: httpErrorResponse.error.errors }))),

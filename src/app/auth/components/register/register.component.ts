@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { select, Store } from '@ngrx/store'
-import { RegisterRequest } from '../../model/register-request.model'
-import { registerAction } from '../../store/action/register.action'
-import { isSubmittingSelector, validationErrorsSelector } from '../../store/selectors'
+import { isSubmittingSelector, validationErrorsSelector } from '../../store/selectors/login.selector'
+import { RegisterRequest } from '../../models/register-request.model'
+import { registerAction } from '../../store/actions/register.action'
 
 @Component({
   selector: 'app-register',
