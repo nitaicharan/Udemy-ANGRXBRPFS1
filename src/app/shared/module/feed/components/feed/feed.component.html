@@ -1,1 +1,29 @@
-This is our sharable feed
+<ng-container *ngIf="isLoading$ | async">Loading...</ng-container>
+
+<ng-container *ngIf="isLoading$ | async">Some error happened...</ng-container>
+
+<ng-container *ngIf="feed$ | async">
+  <div class="article-preview" *ngFor="let article of (feed$ | async)?.articles">
+    <div class="article-meta">
+      <a [routerLink]="['/profiles', article.author.username]">
+        <img [src]="article.author.image" />
+      </a>
+      <div class="info">
+        <a [routerLink]="['/profiles', article.author.username]" class="author">
+          {{ article.author.username }}
+        </a>
+        <span class="date">{{ article.createdAt }}</span>
+      </div>
+      <div class="pull-xs-right">
+        <div>ADD TO FAVORITES </div>
+      </div>
+    </div>
+    <a [routerLink]="['/articles', article.slug]" class="preview-link">
+      <h1>{{ article.title }}</h1>
+      <p>{{ article.description }}</p>
+      <span>Read more..</span>
+      HERE LIST OF TAGS
+    </a>
+  </div>
+  PAGINATION
+</ng-container>
