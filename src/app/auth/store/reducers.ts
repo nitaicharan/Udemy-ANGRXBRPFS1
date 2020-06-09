@@ -8,7 +8,6 @@ const initialState: AuthState = {
   isSubmitting: false,
   currentUser: null,
   validationErrors: null,
-  isLoggedIn: null
 }
 
 export const authReducer = createReducer(
@@ -26,7 +25,6 @@ export const authReducer = createReducer(
     (state, action): AuthState => ({
       ...state,
       isSubmitting: false,
-      isLoggedIn: true,
       currentUser: action.currentUser
     })
   ),
@@ -51,7 +49,6 @@ export const authReducer = createReducer(
     (state, action): AuthState => ({
       ...state,
       isSubmitting: false,
-      isLoggedIn: true,
       currentUser: action.currentUser
     })
   ),

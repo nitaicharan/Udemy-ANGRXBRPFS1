@@ -1,8 +1,8 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { AppState } from '../../../app.state';
-import { RegisterState } from '../states/register.state';
+import { AuthState } from '../auth.state';
 
-export const registerFeatureSelector = createFeatureSelector<AppState, RegisterState>('auth');
+export const registerFeatureSelector = createFeatureSelector<AppState, AuthState>('auth');
 
 export const isSubmittingSelector = createSelector(
   registerFeatureSelector,

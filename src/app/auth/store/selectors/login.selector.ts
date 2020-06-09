@@ -1,8 +1,8 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { AppState } from '../../../app.state';
-import { LoginState } from '../states/login.state';
+import { AuthState } from '../auth.state';
 
-export const loginFeatureSelector = createFeatureSelector<AppState, LoginState>('auth');
+export const loginFeatureSelector = createFeatureSelector<AppState, AuthState>('auth');
 
 export const isSubmittingSelector = createSelector(
   loginFeatureSelector,
@@ -13,3 +13,13 @@ export const validationErrorsSelector = createSelector(
   loginFeatureSelector,
   loginState => loginState.validationErrors,
 );
+
+export const isLoggedInSelector = createSelector(
+  loginFeatureSelector,
+  authState => !!authState.currentUser
+)
+
+export const currentUserSelector = createSelector(
+  loginFeatureSelector,
+  authState => authState.currentUser
+)
