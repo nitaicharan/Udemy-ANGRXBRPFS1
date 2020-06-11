@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { select, Store } from '@ngrx/store'
-import { isSubmittingSelector, validationErrorsSelector } from '../../store/selectors/login.selector'
-import { RegisterRequest } from '../../models/register-request.model'
-import { registerAction } from '../../store/actions/register.action'
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { select, Store } from '@ngrx/store';
+import { isSubmittingSelector, validationErrorsSelector } from '../../store/selectors/login.selector';
+import { RegisterRequest } from '../../models/register-request.model';
+import { registerAction } from '../../store/actions/register.action copy';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +11,7 @@ import { registerAction } from '../../store/actions/register.action'
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  form: FormGroup
+  form: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.initializeForm()
+    this.initializeForm();
   }
 
   isSubmitting = () => this.store.pipe(select(isSubmittingSelector));
@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
       username: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required]
-    })
+    });
   }
 
   onSubmit(): void {

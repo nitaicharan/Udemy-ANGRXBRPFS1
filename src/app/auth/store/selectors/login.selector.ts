@@ -16,10 +16,10 @@ export const validationErrorsSelector = createSelector(
 
 export const isLoggedInSelector = createSelector(
   loginFeatureSelector,
-  authState => !!authState.currentUser
+  authState => !!authState.user
 )
 
 export const currentUserSelector = createSelector(
   loginFeatureSelector,
-  authState => authState.currentUser
+  authState => authState.user
 )

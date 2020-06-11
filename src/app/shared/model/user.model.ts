@@ -1,4 +1,4 @@
-export interface CurrentUser {
+export interface User {
     id: number;
     email: string;
     createAt: string;

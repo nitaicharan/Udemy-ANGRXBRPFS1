@@ -1,5 +1,5 @@
-import { CurrentUser } from 'src/app/shared/model/current-user.model';
+import { User } from 'src/app/shared/model/user.model';
 
 export interface AuthResponse {
-  user: CurrentUser
+  user: User
 }
