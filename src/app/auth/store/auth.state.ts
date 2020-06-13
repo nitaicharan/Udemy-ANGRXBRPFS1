@@ -3,7 +3,7 @@ import { User } from 'src/app/shared/model/user.model';
 
 export interface AuthState {
   isSubmitting: boolean;
-  isLoading:  boolean;
+  isLoading: boolean;
   user?: User;
   validationErrors?: BackendErrors;
 }
