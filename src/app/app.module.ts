@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopbarModule } from './shared/module/topbar/topbar.module';
 import { AuthInterceptor } from './shared/service/authinterceptor.service';
+import { GlobalFeedModule } from './global-feed/global-feed.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,6 +25,7 @@ import { AuthInterceptor } from './shared/service/authinterceptor.service';
       logOnly: environment.production,
     }),
     TopbarModule,
+    GlobalFeedModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
