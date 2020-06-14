@@ -1,6 +1,6 @@
-<ng-container *ngIf="isLoading$ | async">Loading...</ng-container>
+<app-loading *ngIf="isLoading$ | async"></app-loading>
 
-<ng-container *ngIf="isLoading$ | async">Some error happened...</ng-container>
+<app-error-message *ngIf="error$ | async"></app-error-message>
 
 <ng-container *ngIf="feed$ | async">
   <div class="article-preview" *ngFor="let article of (feed$ | async)?.articles">

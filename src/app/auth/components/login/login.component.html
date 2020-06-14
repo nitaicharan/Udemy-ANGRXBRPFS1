@@ -4,8 +4,8 @@
       <div class="col-md-6 offset-md-3 col-xs-12">
         <h1 class="text-xs-center">Sign In</h1>
         <p class="text-xs-center"> <a [routerLink]="['/register']">Need an account?</a> </p>
-        <app-backend-error-messages *ngIf="backendErrors$ | async" [backendErrors]="backendErrors$ | async">
-        </app-backend-error-messages>
+        <app-backend-error *ngIf="backendErrors$ | async" [backendErrors]="backendErrors$ | async">
+        </app-backend-error>
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
           <fieldset>
             <fieldset class="form-group">

@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { RegisterComponent } from 'src/app/auth/components/register/register.component';
-import { BackendErrorMessagesModule } from '../shared/module/backendErrorMessages/backendErrorMessages.module';
+import { BackendErrorModule } from '../shared/module/backend-error/backend-error.module';
 import { PersistanceService } from '../shared/service/persistance.service';
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './components/login/login.component';
@@ -27,7 +27,7 @@ import { authReducer } from './store/reducers';
       LoginEffect,
       UserEffect,
     ]),
-    BackendErrorMessagesModule,
+    BackendErrorModule,
   ],
   declarations: [
     RegisterComponent,

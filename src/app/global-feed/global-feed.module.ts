@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FeedModule } from '../shared/module/feed/feed.module';
 import { GlobalFeedComponent } from './components/global-feed/global-feed.component';
+import { BannerModule } from '../shared/module/banner/banner.module';
 
 
 const routes = [
@@ -16,7 +17,8 @@ const routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    FeedModule
+    FeedModule,
+    BannerModule
   ],
   declarations: [GlobalFeedComponent]
 })
