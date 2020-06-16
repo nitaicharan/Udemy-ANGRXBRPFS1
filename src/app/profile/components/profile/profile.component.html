@@ -1,0 +1,49 @@
+<div class="profile-page" *ngIf="profile">
+  <div class="user-info">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-10 offset-md-1">
+          <img class="user-img" [src]="profile.image" />
+          <h4>{{ profile.username }}</h4>
+          <p>{{ profile.bio }}</p>
+          <div>
+            FOLLOW USER BUTTON
+            <a *ngIf="isUserProfile$ | async" class="btn btn-sm btn-outline-secondary action-btn"
+              [routerLink]="['/settings']">Edit Profile Settings</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-10 offset-md-1">
+        <div class="articles-toggle">
+          <ul class="nav nav-pills outline-active">
+            <li class="nav-item">
+              <!-- We need this hack because angular doesnt understand route change -->
+              <!-- https://github.com/angular/angular/issues/18469 -->
+              <a [routerLink]="['/profiles', profile.username]" class="nav-link" routerLinkActive="active"
+                [routerLinkActiveOptions]="{
+                  exact: true,
+                  __change_detection_hack__: profile.username
+                }">
+                My Posts
+              </a>
+            </li>
+            <li class="nav-item">
+              <a [routerLink]="['/profiles', profile.username, 'favorites']" class="nav-link"
+                routerLinkActive="active" [routerLinkActiveOptions]="{
+                  exact: true,
+                  __change_detection_hack__: profile.username
+                }">
+                Favorites Posts
+              </a>
+            </li>
+          </ul>
+        </div>
+        <app-feed [url]="getApiUrl()"></app-feed>
+      </div>
+    </div>
+  </div>
+</div>
