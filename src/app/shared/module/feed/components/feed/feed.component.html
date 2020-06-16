@@ -1,6 +1,11 @@
-<app-loading *ngIf="isLoading$ | async"></app-loading>
+<ng-container *ngIf="isLoading$ | async">
+  <app-loading></app-loading>
+</ng-container>
 
-<app-error-message *ngIf="error$ | async"></app-error-message>
+<ng-container *ngIf="error$ | async">
+  <app-error-message></app-error-message>
+</ng-container>
+
 
 <ng-container *ngIf="feed$ | async">
   <div class="article-preview" *ngFor="let article of (feed$ | async)?.articles">
@@ -25,6 +30,6 @@
       HERE LIST OF TAGS
     </a>
   </div>
-  <app-pagination [total]="(feed$ | async)?.articlesCount" [url]="baseUrl" [page]="page">
+  <app-pagination [total]="(feed$ | async)?.articlesCount" [url]="baseUrl" [page]="page" [limit]="limit">
   </app-pagination>
 </ng-container>
