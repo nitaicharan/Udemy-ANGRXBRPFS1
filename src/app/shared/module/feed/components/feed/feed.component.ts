@@ -3,9 +3,11 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { BackendErrors } from 'src/app/shared/model/backend-errors.model';
+import { environment } from 'src/environments/environment';
 import { FeedResponse } from '../../models/feed-response.model';
 import { feedAction } from '../../store/feed.action';
 import { errorSelector, feedSelector, isLoadingSelector } from '../../store/feed.selector';
+import { parseUrl, stringify } from 'query-string';
 
 @Component({
   selector: 'app-feed',
@@ -17,8 +19,9 @@ export class FeedComponent implements OnInit, OnDestroy {
   feed$: Observable<FeedResponse>;
   error$: Observable<BackendErrors>;
   isLoading$: Observable<boolean>;
-  baseUrl: string;
   queryParamsSubscription: Subscription;
+  limit = environment.limit;
+  baseUrl: string;
   page: number;
 
   constructor(
@@ -28,8 +31,6 @@ export class FeedComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.store.dispatch(feedAction({ url: this.url }));
-
     this.feed$ = this.store.select(feedSelector);
     this.error$ = this.store.select(errorSelector);
     this.isLoading$ = this.store.select(isLoadingSelector);
@@ -39,11 +40,24 @@ export class FeedComponent implements OnInit, OnDestroy {
       (params: Params) => {
         const page = Number(params.page || '1');
         this.page = page;
+        this.fetchFeed();
       }
     );
   }
 
   ngOnDestroy(): void {
     this.queryParamsSubscription.unsubscribe();
+  }
+
+  fetchFeed(): void {
+    const offset = this.page * this.limit - this.limit;
+    const parsedUrl = parseUrl(this.url);
+    const stringifiedParams = stringify({
+      limit: this.limit,
+      offset,
+      ...parsedUrl.query
+    });
+    const apiUrlWithParams = `${parsedUrl.url}?${stringifiedParams}`;
+    this.store.dispatch(feedAction({ url: apiUrlWithParams }));
   }
 }
