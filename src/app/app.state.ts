@@ -1,10 +1,11 @@
 import { AuthState } from './auth/store/state';
 import { CreateArticleState } from './create-article/store/state';
 import { EditArticleState } from './edit-article/store/state';
+import { Profile } from './profile/model/profile';
+import { SettingsState } from './settings/store/settings.state';
 import { Article } from './shared/model/article.model';
 import { FeedState } from './shared/module/feed/store/feed.state';
 import { PopularTagsState } from './shared/module/popular-tags/store/popular-tags.state';
-import { SettingsState } from './settings/store/settings.state';
 
 export interface AppState {
   auth: AuthState;
@@ -14,4 +15,5 @@ export interface AppState {
   createArticle: CreateArticleState;
   editArticle: EditArticleState;
   settings: SettingsState;
+  profile: Profile;
 }
