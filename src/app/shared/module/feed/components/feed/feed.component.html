@@ -6,8 +6,8 @@
   <app-error-message></app-error-message>
 </ng-container>
 
-<ng-container *ngIf="feed$ | async">
-  <div class="article-preview" *ngFor="let article of (feed$ | async)?.articles">
+<ng-container *ngIf="feed$ | async  as feed">
+  <div class="article-preview" *ngFor="let article of feed.articles">
     <div class="article-meta">
       <a [routerLink]="['/profiles', article.author.username]">
         <img [src]="article.author.image" />
@@ -19,7 +19,8 @@
         <span class="date">{{ article.createdAt }}</span>
       </div>
       <div class="pull-xs-right">
-        <div>ADD TO FAVORITES </div>
+        <app-favorites [isFavorited]="article.favorited" [slug]="article.slug" [count]="article.favoritesCount">
+        </app-favorites>
       </div>
     </div>
     <a [routerLink]="['/articles', article.slug]" class="preview-link">
@@ -29,6 +30,6 @@
       <app-tag-list [tags]="article.tagList"></app-tag-list>
     </a>
   </div>
-  <app-pagination [total]="(feed$ | async)?.articlesCount" [url]="baseUrl" [page]="page" [limit]="limit">
+  <app-pagination [total]="feed.articlesCount" [url]="baseUrl" [page]="page" [limit]="limit">
   </app-pagination>
 </ng-container>
