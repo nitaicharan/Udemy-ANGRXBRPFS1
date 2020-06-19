@@ -2,7 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { combineLatest, Observable, Subscription } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { getArticleAction } from 'src/app/article/store/actions/get-article.action';
 import { articleSelector, errorSelector, isLoadingSelector } from 'src/app/article/store/selectors';
 import { currentUserSelector } from 'src/app/auth/store/selectors/login.selector';
@@ -43,7 +43,6 @@ export class ArticleComponent implements OnDestroy {
       this.store.pipe(select(articleSelector)),
       this.store.pipe(select(currentUserSelector))
     ]).pipe(
-      tap(console.log),
       map(
         ([article, user]) => {
           if (!article || !user) return false; // undefined === undefined (it need's return false)

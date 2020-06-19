@@ -10,10 +10,8 @@ export class ArticleService {
   constructor(private http: HttpClient) { }
 
   getArticle(slug: string) {
-    const fullUrl = `${environment.apiUrl}/articles/${slug}`;
+    const url = `${environment.apiUrl}/articles/${slug}`;
 
-    return this.http.get<ArticleResponse>(fullUrl).pipe(
-      map(response => response.article)
-    );
+    return this.http.get<ArticleResponse>(url).pipe(map(response => response.article));
   }
 }
