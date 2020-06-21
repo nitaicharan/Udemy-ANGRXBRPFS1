@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ArticleModule } from './article/article.module';
+import { CreateArticleModule } from './create-article/create-article.module';
 import { GlobalFeedModule } from './global-feed/global-feed.module';
 import { TopbarModule } from './shared/module/topbar/topbar.module';
 import { AuthInterceptor } from './shared/service/authinterceptor.service';
@@ -33,6 +34,7 @@ import { YourFeedModule } from './your-feed/your-feed.module';
     GlobalFeedModule,
     YourFeedModule,
     TagFeedModule,
+    CreateArticleModule,
     ArticleModule,
   ],
   providers: [
