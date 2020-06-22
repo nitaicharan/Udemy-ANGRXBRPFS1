@@ -3,12 +3,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { GetArticleEffect } from 'src/app/article/store/effects/getArticle.effect';
+import { GetArticleEffect } from 'src/app/article/store/effects/get-article.effect';
 import { ErrorMessageModule } from '../shared/module/error-message/errorMessage.module';
 import { LoadingModule } from '../shared/module/loading/loading.module';
 import { TagListModule } from '../shared/module/tag-list/tag-list.module';
 import { ArticleService as SharedArticleService } from '../shared/service/article.service';
 import { ArticleComponent } from './components/article/article.component';
+import { ArticleService } from './services/article.service';
 import { articleReducer } from './store/reducers';
 
 
@@ -27,6 +28,9 @@ const routes: Routes = [
     ErrorMessageModule,
     TagListModule,
   ],
-  providers: [SharedArticleService]
+  providers: [
+    SharedArticleService,
+    ArticleService,
+  ]
 })
 export class ArticleModule { }
