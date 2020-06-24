@@ -1,25 +1,24 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable, Subscription } from 'rxjs';
+import { parseUrl, stringify } from 'query-string';
+import { Observable } from 'rxjs';
 import { BackendErrors } from 'src/app/shared/model/backend-errors.model';
 import { environment } from 'src/environments/environment';
 import { FeedResponse } from '../../models/feed-response.model';
 import { feedAction } from '../../store/feed.action';
 import { errorSelector, feedSelector, isLoadingSelector } from '../../store/feed.selector';
-import { parseUrl, stringify } from 'query-string';
 
 @Component({
   selector: 'app-feed',
   templateUrl: './feed.component.html',
   styleUrls: ['./feed.component.scss']
 })
-export class FeedComponent implements OnInit, OnDestroy {
+export class FeedComponent implements OnInit {
   @Input() url: string;
   feed$: Observable<FeedResponse>;
   error$: Observable<BackendErrors>;
   isLoading$: Observable<boolean>;
-  queryParamsSubscription: Subscription;
   limit = environment.limit;
   baseUrl: string;
   page: number;
@@ -43,10 +42,6 @@ export class FeedComponent implements OnInit, OnDestroy {
         this.fetchFeed();
       }
     );
-  }
-
-  ngOnDestroy(): void {
-    this.queryParamsSubscription.unsubscribe();
   }
 
   fetchFeed(): void {

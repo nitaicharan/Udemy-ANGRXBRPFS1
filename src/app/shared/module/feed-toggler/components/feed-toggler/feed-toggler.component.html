@@ -4,11 +4,11 @@
       <a routerLink="/feed" routerLinkActive="active" class="nav-link">Your feed</a>
     </li>
     <li class="nav-item" *ngIf="isLoggedIn$ | async">
-      <a routerLink="/" routerLinkActive="active" class="nav-link">Global feed</a>
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">Global
+        feed</a>
     </li>
     <li class="nav-item" *ngIf="name">
-      <a [routerLink]="['/feed', name]" routerLinkActive="active" class="nav-link">{{name}}</a>
-      <i class="ion-pound"></i>
+      <a [routerLink]="['/tags', name]" routerLinkActive="active" class="nav-link"><i class="ion-pound"></i>{{name}}</a>
     </li>
   </ul>
 </div>

@@ -12,6 +12,8 @@ import { AppComponent } from './app.component';
 import { GlobalFeedModule } from './global-feed/global-feed.module';
 import { TopbarModule } from './shared/module/topbar/topbar.module';
 import { AuthInterceptor } from './shared/service/authinterceptor.service';
+import { TagFeedModule } from './tag-feed/tag-feed.module';
+import { YourFeedModule } from './your-feed/your-feed.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,6 +30,8 @@ import { AuthInterceptor } from './shared/service/authinterceptor.service';
     }),
     TopbarModule,
     GlobalFeedModule,
+    YourFeedModule,
+    TagFeedModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
