@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { FeedModule } from '../shared/module/feed/feed.module';
-import { GlobalFeedComponent } from './components/global-feed/global-feed.component';
 import { BannerModule } from '../shared/module/banner/banner.module';
+import { FeedModule } from '../shared/module/feed/feed.module';
+import { PopularTagsModule } from '../shared/module/popular-tags/popular-tags.module';
+import { GlobalFeedComponent } from './components/global-feed/global-feed.component';
 
 
 const routes = [
@@ -18,7 +19,8 @@ const routes = [
     CommonModule,
     RouterModule.forChild(routes),
     FeedModule,
-    BannerModule
+    BannerModule,
+    PopularTagsModule,
   ],
   declarations: [GlobalFeedComponent]
 })
