@@ -11,6 +11,7 @@ import { feedReducer } from './store/reducers';
 import { ErrorMessageModule } from '../error-message/errorMessage.module';
 import { LoadingModule } from '../loading/loading.module';
 import { PaginationModule } from '../pagination/pagination.module';
+import { TagListModule } from '../tag-list/tag-list.module';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { PaginationModule } from '../pagination/pagination.module';
     ErrorMessageModule,
     LoadingModule,
     PaginationModule,
+    TagListModule,
   ],
   declarations: [FeedComponent],
   exports: [FeedComponent],
