@@ -2,7 +2,7 @@ import { createReducer, on } from '@ngrx/store';
 import { loginAction, loginFailureAction, loginSuccessAction } from 'src/app/auth/store/actions/login.action';
 import { registerAction, registerFailureAction, registerSuccessAction } from './actions/register.action copy';
 import { getUserAction, getUserSuccessAction, getUserFailureAction } from './actions/user.action';
-import { AuthState } from './auth.state';
+import { AuthState } from './state';
 
 
 const initialState: AuthState = {
