@@ -5,7 +5,7 @@ import { combineLatest, Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { getArticleAction } from 'src/app/article/store/actions/get-article.action';
 import { articleSelector, errorSelector, isLoadingSelector } from 'src/app/article/store/selectors';
-import { currentUserSelector } from 'src/app/auth/store/selectors/login.selector';
+import { userSelector } from 'src/app/auth/store/selectors/login.selector';
 import { Article } from 'src/app/shared/model/article.model';
 import { deleteArticleAction } from '../../store/actions/delete-article.action';
 
@@ -41,7 +41,7 @@ export class ArticleComponent implements OnDestroy {
 
     this.isAuthor$ = combineLatest([
       this.store.pipe(select(articleSelector)),
-      this.store.pipe(select(currentUserSelector))
+      this.store.pipe(select(userSelector))
     ]).pipe(
       map(
         ([article, user]) => {

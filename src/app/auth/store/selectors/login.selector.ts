@@ -19,7 +19,7 @@ export const isLoggedInSelector = createSelector(
   authState => !!authState.user
 )
 
-export const currentUserSelector = createSelector(
+export const userSelector = createSelector(
   loginFeatureSelector,
   authState => authState.user
 )

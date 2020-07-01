@@ -13,6 +13,7 @@ import { ArticleModule } from './article/article.module';
 import { CreateArticleModule } from './create-article/create-article.module';
 import { EditArticleModule } from './edit-article/edit-article.module';
 import { GlobalFeedModule } from './global-feed/global-feed.module';
+import { SettingsModule } from './settings/settings.module';
 import { TopbarModule } from './shared/module/topbar/topbar.module';
 import { AuthInterceptor } from './shared/service/authinterceptor.service';
 import { TagFeedModule } from './tag-feed/tag-feed.module';
@@ -38,6 +39,7 @@ import { YourFeedModule } from './your-feed/your-feed.module';
     EditArticleModule,
     CreateArticleModule,
     ArticleModule,
+    SettingsModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

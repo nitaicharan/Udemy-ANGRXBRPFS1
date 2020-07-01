@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { UserInput } from 'src/app/shared/model/user-input.model';
 import { User } from 'src/app/shared/model/user.model';
 import { environment } from 'src/environments/environment';
 import { AuthResponse } from '../models/auth-response.model';
@@ -25,12 +26,17 @@ export class AuthService {
       .pipe(map(this.extractUser));
   }
 
+  extractUser(response: AuthResponse): User {
+    return response.user;
+  }
+
   getUser() {
     const url = `${environment.apiUrl}/user`;
     return this.httpClient.get(url).pipe(map(this.extractUser));
   }
 
-  extractUser(response: AuthResponse): User {
-    return response.user;
+  updateUser(data: UserInput): Observable<User> {
+    const url = environment.apiUrl + '/user';
+    return this.httpClient.put(url, data).pipe(map(this.extractUser));
   }
 }
