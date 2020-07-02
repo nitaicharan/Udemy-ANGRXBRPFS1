@@ -28,7 +28,7 @@ This project was part of the Udemy course "Angular and NgRx - Building Real Proj
 
 ### Certificate
 
-This certificate above verifies that [Nitai Charan][udemy-url] successfully completed the course [Angular and NgRx - Building Real Project From Scratch][course-url] on ??/??/???? as taught by [Oleksandr Kocherhin][instructor-url] on Udemy. The certificate indicates the entire course was completed as validated by the student.
+This certificate above verifies that [Nitai Charan][udemy-url] successfully completed the course [Angular and NgRx - Building Real Project From Scratch][course-url] on 07/02/2020 as taught by [Oleksandr Kocherhin][instructor-url] on Udemy. The certificate indicates the entire course was completed as validated by the student.
 
 <p align="center">
   <img src="CERTIFICATE.jpg">
@@ -65,7 +65,7 @@ git push origin `git subtree split --prefix dist/course master`:gh-pages --force
 
 [course-url]: https://udemy.com/course/angular-and-ngrx-building-real-project-from-scratch/
 [instructor-url]: https://udemy.com/user/ejiqpep/
-[certificate-url]: https://ude.my/
+[certificate-url]: https://ude.my/UC-0f50fc43-a444-4e67-ab1d-2d497b4b8a91
 
 <!-- CONTACT SHIELDS -->
 
