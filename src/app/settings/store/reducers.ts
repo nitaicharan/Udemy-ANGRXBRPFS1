@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { updateUserAction, updateUserFailureAction } from 'src/app/auth/store/actions/user.action';
+import { updateUserAction, updateUserFailureAction, updateUserSuccessAction } from 'src/app/auth/store/actions/user.action';
 import { updateArticleSuccessAction } from 'src/app/edit-article/store/actions/update-article.action';
 import { SettingsState } from './settings.state';
 
@@ -18,7 +18,7 @@ export const settingsReducers = createReducer(
     })
   ),
   on(
-    updateArticleSuccessAction,
+    updateUserSuccessAction,
     state => ({
       ...state,
       isSubmitting: false

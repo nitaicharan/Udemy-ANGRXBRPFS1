@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { catchError, map, skipWhile, switchMap } from 'rxjs/operators';
+import { catchError, map, skipWhile, switchMap, tap } from 'rxjs/operators';
 import { PersistanceService } from 'src/app/shared/service/persistance.service';
 import { AuthService } from '../../services/auth.service';
 import { getUserAction, getUserFailureAction, getUserSuccessAction, updateUserAction, updateUserFailureAction, updateUserSuccessAction } from '../actions/user.action';
@@ -21,6 +21,7 @@ export class UserEffect {
   updateCurrentUser$ = createEffect(() => this.actions$.pipe(
     ofType(updateUserAction),
     switchMap(({ userInput }) => this.authService.updateUser(userInput)),
+    tap(console.log),
     map(user => updateUserSuccessAction({ user })),
     catchError((errorResponse: HttpErrorResponse) => of(updateUserFailureAction({ errors: errorResponse.error.errors }))),
   ));

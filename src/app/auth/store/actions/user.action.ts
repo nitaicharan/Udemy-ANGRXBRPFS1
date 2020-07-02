@@ -23,11 +23,11 @@ export const updateUserAction = createAction(
 );
 
 export const updateUserSuccessAction = createAction(
-  UserType.UPDATE_USER,
+  UserType.UPDATE_USER_SUCCESS,
   props<{ user: User }>()
 );
 
 export const updateUserFailureAction = createAction(
-  UserType.UPDATE_USER,
+  UserType.UPDATE_USER_FAILURE,
   props<{ errors: BackendErrors }>()
 );

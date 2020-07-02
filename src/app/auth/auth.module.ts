@@ -11,6 +11,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
 import { LoginEffect } from './store/effects/login.effect';
+import { LogoutEffect } from './store/effects/logout.effect';
 import { RegisterEffect } from './store/effects/register.effect';
 import { UserEffect } from './store/effects/user.effect';
 import { authReducer } from './store/reducers';
@@ -26,6 +27,7 @@ import { authReducer } from './store/reducers';
       RegisterEffect,
       LoginEffect,
       UserEffect,
+      LogoutEffect,
     ]),
     BackendErrorModule,
   ],

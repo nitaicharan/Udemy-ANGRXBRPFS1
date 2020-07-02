@@ -6,8 +6,7 @@ import { of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { PersistanceService } from 'src/app/shared/service/persistance.service';
 import { AuthService } from '../../services/auth.service';
-import { loginAction, loginSuccessAction } from '../actions/login.action';
-import { registerFailureAction } from '../actions/register.action copy';
+import { loginAction, loginFailureAction, loginSuccessAction } from '../actions/login.action';
 
 @Injectable()
 export class LoginEffect {
@@ -17,7 +16,7 @@ export class LoginEffect {
       ({ request }) => this.authService.login(request).pipe(
         tap(currentUser => this.persistanceService.setToken(currentUser.token)),
         map(currentUser => loginSuccessAction({ user: currentUser })),
-        catchError((httpErrorResponse: HttpErrorResponse) => of(registerFailureAction({ errors: httpErrorResponse.error.errors }))),
+        catchError((httpErrorResponse: HttpErrorResponse) => of(loginFailureAction({ errors: httpErrorResponse.error.errors }))),
       ),
     )
   ));
